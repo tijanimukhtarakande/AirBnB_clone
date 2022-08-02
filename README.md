@@ -1,6 +1,6 @@
 # AirBnB clone - The console <img src=" https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20220801%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220801T214715Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=4054c6409d3cb9a4133d60d9ce327678326f97c14f93120bdffce04c18c05c18"  height=40 style="margin-bottom: -10px;" />
 
-### This is the first step towards building your first full web application: the AirBnB clone. This first step is very important because you will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
+This is the first step towards building your first full web application: the AirBnB clone. This first step is very important because you will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
 
 <br>
 
