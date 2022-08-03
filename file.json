@@ -1,0 +1,108 @@
+{
+	"BaseModel.e9a826f7-50f2-4504-8272-948e4c2e14a3": {
+		"id": "e9a826f7-50f2-4504-8272-948e4c2e14a3",
+		"created_at": "2022-08-03T02:46:57.831520",
+		"updated_at": "2022-08-03T02:46:57.831568",
+		"__class__": "BaseModel"
+	},
+	"State.453eaf0b-029b-4444-8c9e-e3725401b4ce": {
+		"id": "453eaf0b-029b-4444-8c9e-e3725401b4ce",
+		"created_at": "2022-08-03T02:47:05.431163",
+		"updated_at": "2022-08-03T02:47:05.431230",
+		"name": "",
+		"__class__": "State"
+	},
+	"City.9ac9d69e-6453-4dfb-8441-2d5006453ee8": {
+		"id": "9ac9d69e-6453-4dfb-8441-2d5006453ee8",
+		"created_at": "2022-08-03T02:47:10.711755",
+		"updated_at": "2022-08-03T02:47:10.711790",
+		"state_id": "",
+		"name": "",
+		"__class__": "City"
+	},
+	"Place.07644966-0aa3-4d84-8980-21223e5aa328": {
+		"id": "07644966-0aa3-4d84-8980-21223e5aa328",
+		"created_at": "2022-08-03T02:47:22.467001",
+		"updated_at": "2022-08-03T03:02:44.467618",
+		"city_id": "",
+		"user_id": "",
+		"name": "",
+		"description": "",
+		"number_rooms": 0,
+		"number_bathrooms": 0,
+		"max_guest": 0,
+		"price_by_night": 0,
+		"latitude": 0.0,
+		"longitude": 0.0,
+		"amenity_ids": [],
+		"longitde": "100.3",
+		"l": "100.3",
+		"__class__": "Place"
+	},
+	"Amenity.6ed69c43-7033-4f25-aa6e-8aa4bf58e18a": {
+		"id": "6ed69c43-7033-4f25-aa6e-8aa4bf58e18a",
+		"created_at": "2022-08-03T02:47:26.796093",
+		"updated_at": "2022-08-03T02:47:26.796170",
+		"name": "",
+		"__class__": "Amenity"
+	},
+	"Review.4ae24c6f-1b61-4fea-900c-5f4b7dbd2476": {
+		"id": "4ae24c6f-1b61-4fea-900c-5f4b7dbd2476",
+		"created_at": "2022-08-03T02:47:31.940952",
+		"updated_at": "2022-08-03T09:02:48.713811",
+		"place_id": "",
+		"user_id": "",
+		"text": "",
+		"__class__": "Review"
+	},
+	"User.a3d1a81c-e8b6-4223-af33-1ee06f70fd96": {
+		"id": "a3d1a81c-e8b6-4223-af33-1ee06f70fd96",
+		"created_at": "2022-08-03T03:32:14.126008",
+		"updated_at": "2022-08-03T12:35:28.312409",
+		"email": "michaseyi@gmail.com",
+		"password": "michaseyi",
+		"first_name": "John",
+		"last_name": "",
+		"name": "ader",
+		"age": 89,
+		"text": "today was a greate day and i really enjoyed it",
+		"__class__": "User"
+	},
+	"User.b1294234-d1ff-4746-9fef-95d782eafce2": {
+		"id": "b1294234-d1ff-4746-9fef-95d782eafce2",
+		"created_at": "2022-08-03T03:32:15.622349",
+		"updated_at": "2022-08-03T03:32:15.622404",
+		"email": "",
+		"password": "",
+		"first_name": "",
+		"last_name": "",
+		"__class__": "User"
+	},
+	"User.bb1137fa-89ed-4912-90d3-115cd8107eb1": {
+		"id": "bb1137fa-89ed-4912-90d3-115cd8107eb1",
+		"created_at": "2022-08-03T03:32:16.182982",
+		"updated_at": "2022-08-03T03:32:16.183009",
+		"email": "",
+		"password": "",
+		"first_name": "",
+		"last_name": "",
+		"__class__": "User"
+	},
+	"Place.c26dacf6-8e17-4352-943b-30d6acd717ec": {
+		"id": "c26dacf6-8e17-4352-943b-30d6acd717ec",
+		"created_at": "2022-08-03T08:46:55.539144",
+		"updated_at": "2022-08-03T08:46:55.539217",
+		"city_id": "",
+		"user_id": "",
+		"name": "",
+		"description": "",
+		"number_rooms": 0,
+		"number_bathrooms": 0,
+		"max_guest": 0,
+		"price_by_night": 0,
+		"latitude": 0.0,
+		"longitude": 0.0,
+		"amenity_ids": [],
+		"__class__": "Place"
+	}
+}

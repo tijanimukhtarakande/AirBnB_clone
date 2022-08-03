@@ -2,6 +2,7 @@
 """This module defines a BaseModel class"""
 import uuid
 import datetime
+import models
 
 
 class BaseModel:
@@ -25,6 +26,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.today()
             self.updated_at = self.created_at
+            models.storage.new(self)
 
     def __str__(self):
         """
@@ -39,6 +41,7 @@ class BaseModel:
         save updates the object
         """
         self.updated_at = datetime.datetime.today()
+        models.storage.save()
 
     def to_dict(self):
         """
@@ -54,4 +57,3 @@ class BaseModel:
         dict_form["updated_at"] = datetime.datetime.isoformat(
             dict_form["updated_at"])
         return dict_form
-
