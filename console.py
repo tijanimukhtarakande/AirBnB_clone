@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""Define HBNBCommand class that serves as an entry point to the AirBnB console"""
+"""This module defines the HBNBCommand class that serves as an entry point to the AirBnB console"""
 import cmd
 import os
 import sys
 import re
-
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -12,15 +11,26 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-
 from models import storage
 
-avaliable_classes = {"BaseModel": BaseModel, "User": User, "State": State,
-                     "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
+avaliable_classes = {
+    "BaseModel": BaseModel,
+    "User": User,
+    "State": State,
+    "City": City,
+    "Amenity": Amenity,
+    "Place": Place,
+    "Review": Review}
 
 
-object_type = {"number_rooms": int, "number_bathrooms": int, "max_guest": int,
-               "price_by_night": int, "latitude": float, "longitude": float, "age": int}
+object_type = {
+    "number_rooms": int,
+    "number_bathrooms": int,
+    "max_guest": int,
+    "price_by_night": int,
+    "latitude": float,
+    "longitude": float,
+    "age": int}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -28,34 +38,48 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def do_clear(self, arg):
+        """
+        Usage: clear
+
+        clears the screen
+        """
         os.system('clear')
 
     def precmd(self, line: str):
-        if re.search("[a-z]+\.all\(\)", line):
+        """
+        precmd parses the line before it is executed by the available handlers
+
+        :param line(str): is the user input
+        :return (str): is the parsed line
+        """
+        line = line.strip()
+        if re.search("[a-z]+\\.all\\(\\)$", line):
             class_name = line.split('.')[0]
             command = "all"
             return command + " " + class_name
-        if re.search("[a-z]+\.count\(\)", line):
+        if re.search("[a-z]+\\.count\\(\\)$", line):
             class_name = line.split('.')[0]
             command = "count"
             return command + " " + class_name
-        if re.search("[a-z]+\.show\(.*?\)", line):
+        if re.search("[a-z]+\\.show\\(.*?\\)$", line):
             class_name = line.split('.')[0]
             command = "show"
             obj_id = line[line.find('(') + 1: -1]
             return command + " " + class_name + " " + obj_id
-        if re.search("[a-z]+\.destroy\(.*?\)", line):
+        if re.search("[a-z]+\\.destroy\\(.*?\\)$", line):
             class_name = line.split('.')[0]
             command = "destroy"
             obj_id = line[line.find('(') + 1: -1]
             return command + " " + class_name + " " + obj_id
-        if re.search("[a-z]+\.update\(.*?\)", line):
+        if re.search("[a-z]+\\.update\\(.*?\\)$", line):
             class_name = line.split('.')[0]
             command = "update"
             param = line[line.find('(') + 1: -1]
             try:
-                update_dict: dict = eval(param[param.find(',') + 1:])
-            except:
+                update_dict = eval(param[param.find(',') + 1:])
+                if type(update_dict) != dict:
+                    raise TypeError
+            except BaseException:
                 param = param.replace(',', '', 2)
                 return command + " " + class_name + " " + param
             obj_id = param[0: param.find(',')].strip('" ')
@@ -75,6 +99,11 @@ class HBNBCommand(cmd.Cmd):
         return line
 
     def do_count(self, arg):
+        """
+        Usage: count <class_name> or <class_name>.count()
+
+        it returns the number of objects of the type <class_name>
+        """
         arg = split(arg)
         if arg[0] not in avaliable_classes.keys():
             return print("** class doesn't exist **")
@@ -94,16 +123,26 @@ class HBNBCommand(cmd.Cmd):
         sys.exit()
 
     def do_create(self, arg):
+        """
+        Usage: create <class_name>
+
+        Creates a new object of type <class_name>
+        """
         arg = split(arg)
         if len(arg) < 1:
             return print("** class name missing **")
         if arg[0] not in avaliable_classes.keys():
             return print("** class doesn't exist **")
         new_obj = avaliable_classes[arg[0]]()
-        new_obj.save()
+        storage.save()
         print(new_obj.id)
 
     def do_show(self, arg):
+        """
+        Usage : show <class_name> <object_id> or <class_name>.show(<object_id>)
+
+        Displays the details of the given object_id
+        """
         arg = split(arg)
         if len(arg) < 1:
             return print("** class name missing **")
@@ -111,7 +150,7 @@ class HBNBCommand(cmd.Cmd):
             return print("** class doesn't exist **")
         if len(arg) < 2:
             return print("** instance id missing **")
-        all_objs: dict = storage.all()
+        all_objs = storage.all()
         obj_name = "{}.{}".format(arg[0], arg[1])
         obj = all_objs.get(obj_name, None)
         if obj is None:
@@ -119,7 +158,12 @@ class HBNBCommand(cmd.Cmd):
         print(obj)
 
     def do_all(self, arg):
+        """
+        Usage: all or all <class_name> or <class_name>.all()
 
+        Display all objects if no class_name is specified else it displays
+        all objects of type class_name
+        """
         all_objs = storage.all()
         to_print = []
         arg = split(arg)
@@ -128,14 +172,20 @@ class HBNBCommand(cmd.Cmd):
                 return print("** class doesn't exist **")
             for key in all_objs:
                 if key.split('.')[0] == arg[0]:
-                    to_print.append("\"{}\"".format(all_objs[key].__str__()))
-            print("[{}]" .format(", ".join(to_print)))
+                    to_print.append(all_objs[key].__str__())
+            print(to_print)
             return
         for key in all_objs:
-            to_print.append("\"{}\"".format(all_objs[key].__str__()))
-        print("[{}]" .format(", ".join(to_print)))
+            to_print.append(all_objs[key].__str__())
+        print(to_print)
 
     def do_destroy(self, arg):
+        """
+        Usage: destroy <class_name> <object_id> or \
+<class_name>.destroy(<object_id>)
+
+        Removes an object with the given class_name and object_id from storage
+        """
         arg = split(arg)
         if len(arg) < 1:
             return print("** class name missing **")
@@ -143,13 +193,21 @@ class HBNBCommand(cmd.Cmd):
             return print("** class doesn't exist **")
         if len(arg) < 2:
             return print("** instance id missing **")
-        all_objs: dict = storage.all()
+        all_objs = storage.all()
         obj_name = "{}.{}".format(arg[0], arg[1])
         if all_objs.pop(obj_name, None) is None:
             return print("** no instance found **")
         storage.save()
 
     def do_update(self, arg):
+        """
+        Usage: update <class name> <id> <attribute name> "<attribute value>"
+or <class name>.update(<id>, <attribute name>, <attribute value>)
+or <class name>.update(<id>, <dictionary representation>)
+
+        Updates the details of the given id with the given attribute name and
+        value or dictionary representation
+        """
         arg = split(arg)
         if len(arg) < 1:
             return print("** class name missing **")
@@ -157,7 +215,7 @@ class HBNBCommand(cmd.Cmd):
             return print("** class doesn't exist **")
         if len(arg) < 2:
             return print("** instance id missing **")
-        all_objs: dict = storage.all()
+        all_objs = storage.all()
         obj_name = "{}.{}".format(arg[0], arg[1])
         obj = all_objs.get(obj_name, None)
         if obj is None:

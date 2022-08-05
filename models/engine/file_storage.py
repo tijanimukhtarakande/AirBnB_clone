@@ -11,8 +11,14 @@ from models.review import Review
 import json
 
 
-avaliable_classes = {"BaseModel": BaseModel, "User": User, "State": State,
-                     "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
+avaliable_classes = {
+    "BaseModel": BaseModel,
+    "User": User,
+    "State": State,
+    "City": City,
+    "Amenity": Amenity,
+    "Place": Place,
+    "Review": Review}
 
 
 class FileStorage:
@@ -55,10 +61,10 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path) as infile:
                 json_data = json.load(infile)
-                if type(json_data) == dict:
+                if isinstance(json_data, dict):
                     for key in json_data:
                         json_data[key] = avaliable_classes[json_data[key]["__class__"]](
                             **json_data[key])
                     FileStorage.__objects = json_data
-        except:
+        except BaseException:
             pass
