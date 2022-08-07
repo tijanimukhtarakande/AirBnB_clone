@@ -61,7 +61,7 @@ To start the console, run the command below in the root directory of the project
 
 <br>
 
-Using the `help` command you get the documentation of all the commands baked into the console, `help <command_name>` or `? <command_name>` gives the documentation of the command if present.
+Using the `help` command you get the documentation of all the commands baked into the console, `help <command_name>` or `? <command_name>` gives the documentation of the command if present. To exit the CLI use the `quit` command.
 
 ```shel
 ➜  AirBnB_clone git:(main) ✗ ./console.py
@@ -75,7 +75,8 @@ Usage: update <class name> <id> <attribute name> "<attribute value>"
    or <class name>.update(<id>, <dictionary representation>)
 
 Updates the details of the given id with the given attribute name and value or dictionary representation
-
+(hbnb) quit
+➜  AirBnB_clone git:(main)
 ```
 
 <br>

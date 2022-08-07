@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Defines the FileStorage class that handle persisting of objects to the disk"""
+"""Defines the FileStorage class that handle persisting of objects
+ to the disk"""
 
 from models.base_model import BaseModel
 from models.user import User
@@ -31,15 +32,18 @@ class FileStorage:
         """
         all returns the private class attribute objects
 
-        :return (dict): is a key value pair that maps object id to their respective objects
+        :return (dict): is a key value pair that maps object id to their
+        respective objects
         """
         return FileStorage.__objects
 
     def new(self, obj: BaseModel):
         """
-        new creates a new entry for the input obj in the private class attribute objects
+        new creates a new entry for the input obj in the private class
+        attribute objects
 
-        :param obj(BaseModel): new object to be added to the private class attribute objects
+        :param obj(BaseModel): new object to be added to the private class
+        attribute objects
         """
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
@@ -63,7 +67,8 @@ class FileStorage:
                 json_data = json.load(infile)
                 if isinstance(json_data, dict):
                     for key in json_data:
-                        json_data[key] = avaliable_classes[json_data[key]["__class__"]](
+                        json_data[key] = avaliable_classes[json_data[key]
+                                                           ["__class__"]](
                             **json_data[key])
                     FileStorage.__objects = json_data
         except BaseException:

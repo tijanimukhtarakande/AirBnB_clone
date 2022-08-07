@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""This module defines the HBNBCommand class that serves as an entry point to the AirBnB console"""
+"""This module defines the HBNBCommand class that serves as an entry point
+to the AirBnB console"""
 import cmd
 import os
 import sys
