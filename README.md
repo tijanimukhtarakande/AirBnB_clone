@@ -242,5 +242,5 @@ OK
 
 List of individuals having contributed to the repository.
 
-- Michael Adewole - <[michaseyi](github.com/michaeyi@gmail.com)>
-- Tijani Mukhtar - <[Tiganimukhtarakande](github.com/Tiganimukhtarakande)>
+- Michael Adewole - [michaseyi](www.github.com/michaseyi)
+- Tijani Mukhtar - [Tijanimukhtarakande](www.github.com/Tijanimukhtarakande)
