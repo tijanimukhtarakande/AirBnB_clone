@@ -1,7 +1,6 @@
 #!/usr/bin/python
 """This module contains unittest code for the console module"""
 
-from turtle import clear
 import unittest
 import sys
 from console import HBNBCommand
