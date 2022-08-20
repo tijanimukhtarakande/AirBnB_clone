@@ -1,0 +1,9 @@
+footer {
+	top: calc(100% - 60px);
+	border-top: 1px solid #ccc;
+	display: grid;
+	height: 60px;
+	place-items: center;
+	position: absolute;
+	width: 100%;
+}
